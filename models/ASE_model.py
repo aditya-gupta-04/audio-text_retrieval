@@ -11,7 +11,7 @@ import numpy as np
 import torch.nn.functional as F
 from tools.utils import l2norm
 from models.AudioEncoder import Cnn10, ResNet38, Cnn14
-from models.TextEncoder import BertEncoder, W2VEncoder
+from models.TextEncoder import BertEncoder
 from models.BERT_Config import MODELS
 
 
