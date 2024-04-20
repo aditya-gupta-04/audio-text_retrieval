@@ -1,6 +1,6 @@
 mode: 'train'
 exp_name: 'exp'
-dataset: 'AudioCaps'
+dataset: 'Clotho'
 text_encoder: 'bert'
 joint_embed: 1024
 
