@@ -26,7 +26,7 @@ data:
 training:
   margin: 0.2
   freeze: Yes
-  loss: contrastive  # 'triplet', 'weight', 'ntxent'
+  loss: ntxent  # 'triplet', 'weight', 'ntxent', 'contrastive'
   spec_augmentation: Yes
   epochs: 50
   lr: !!float 1e-4
