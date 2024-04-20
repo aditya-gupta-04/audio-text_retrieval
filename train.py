@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    config = get_config(args.config)
+    config = get_config()
 
     config.exp_name = args.exp_name
     # config.dataset = args.dataset
