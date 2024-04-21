@@ -21,6 +21,8 @@ def load_metadata(dataset, csv_file):
     """
     if dataset == 'AudioCaps' and 'train' in csv_file:
         caption_field = None
+    elif dataset == 'SpotifySongs':
+        caption_field = None
     else:
         caption_field = ['caption_{}'.format(i) for i in range(1, 6)]
     csv_list = load_csv_file(csv_file)
@@ -54,11 +56,13 @@ def pack_dataset_to_hdf5(dataset):
     """
 
     splits = ['train', 'val', 'test']
-    sampling_rate = 32000
+    sampling_rate = 44100
     all_captions = []
     if dataset == 'AudioCaps':
         audio_duration = 10
     elif dataset == 'Clotho':
+        audio_duration = 30
+    elif dataset == 'SpotifySongs':
         audio_duration = 30
     else:
         raise NotImplementedError(f'No dataset named: {dataset}')
