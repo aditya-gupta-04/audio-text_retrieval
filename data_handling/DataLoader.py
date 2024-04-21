@@ -32,6 +32,13 @@ class AudioCaptionDataset(Dataset):
                 self.audio_keys = [audio_name.decode() for audio_name in hf['audio_name'][:]]
                 # audio_names: [str]
                 self.captions = [caption.decode() for caption in hf['caption'][:]]
+        elif dataset == 'SpotifySongs':
+            self.is_train = True
+            self.num_captions_per_audio = 1
+            with h5py.File(self.h5_path, 'r') as hf:
+                self.audio_keys = [audio_name.decode() for audio_name in hf['audio_name'][:]]
+                # audio_names: [str]
+                self.captions = [caption.decode() for caption in hf['caption'][:]]
         else:
             self.is_train = False
             self.num_captions_per_audio = 5
@@ -58,6 +65,9 @@ class AudioCaptionDataset(Dataset):
             captions = self.captions[audio_idx]
             cap_idx = index % self.num_captions_per_audio
             caption = captions[cap_idx].decode()
+
+        if self.dataset == 'SpotifySongs':
+            caption = self.captions[audio_idx]
 
         if self.dataset == 'Clotho':
             length = self.audio_lengths[audio_idx]
