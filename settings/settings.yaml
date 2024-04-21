@@ -1,6 +1,6 @@
 mode: 'train'
 exp_name: 'exp'
-dataset: 'Clotho'
+dataset: 'SpotifySongs'
 text_encoder: 'bert'
 joint_embed: 1024
 
