@@ -101,6 +101,8 @@ def pack_dataset_to_hdf5(dataset):
 
             if split == 'train' and dataset == 'AudioCaps':
                 hf.create_dataset('caption', shape=(audio_nums,), dtype=h5py.special_dtype(vlen=str))
+            if dataset == 'SpotifySongs':
+                hf.create_dataset('caption', shape=(audio_nums,), dtype=h5py.special_dtype(vlen=str))
             else:
                 hf.create_dataset('caption', shape=(audio_nums, 5), dtype=h5py.special_dtype(vlen=str))
 
