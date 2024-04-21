@@ -20,7 +20,7 @@ cnn_encoder:
   freeze: Yes
 
 data:
-  batch_size: 64
+  batch_size: 32
   num_workers: 8
 
 training:
