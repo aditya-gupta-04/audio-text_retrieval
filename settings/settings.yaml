@@ -5,7 +5,7 @@ text_encoder: 'bert'
 joint_embed: 1024
 
 wav:
-  sr: 32000 
+  sr: 44100 
   window_size: 1024
   hop_length: 320
   mel_bins: 64
