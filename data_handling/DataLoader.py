@@ -59,21 +59,22 @@ class AudioCaptionDataset(Dataset):
         with h5py.File(self.h5_path, 'r') as hf:
             waveform = hf['waveform'][audio_idx]
 
-        if self.dataset == 'AudioCaps' and self.is_train:
-            caption = self.captions[audio_idx]
-        else:
-            captions = self.captions[audio_idx]
-            cap_idx = index % self.num_captions_per_audio
-            caption = captions[cap_idx].decode()
+        # if self.dataset == 'AudioCaps' and self.is_train:
+        #     caption = self.captions[audio_idx]
+        # else:
+        #     captions = self.captions[audio_idx]
+        #     cap_idx = index % self.num_captions_per_audio
+        #     caption = captions[cap_idx].decode()
 
         if self.dataset == 'SpotifySongs':
             caption = self.captions[audio_idx]
-
-        if self.dataset == 'Clotho':
-            length = self.audio_lengths[audio_idx]
-            return waveform, caption, audio_idx, length, index
-        else:
             return waveform, caption, audio_idx, len(waveform), index
+
+        # if self.dataset == 'Clotho':
+        #     length = self.audio_lengths[audio_idx]
+        #     return waveform, caption, audio_idx, length, index
+        # else:
+        #     return waveform, caption, audio_idx, len(waveform), index
 
 
 def collate_fn(batch_data):
