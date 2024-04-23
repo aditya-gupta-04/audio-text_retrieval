@@ -118,9 +118,9 @@ def pack_dataset_to_hdf5(dataset):
                 hf['caption'][i] = meta_dict['captions'][i]
 
         logger.info(f'Packed {split} set to {hdf5_path} using {time.time() - start_time} s.')
-    words_list, words_freq = _create_vocabulary(all_captions)
-    logger.info(f'Creating vocabulary: {len(words_list)} tokens!')
-    write_pickle_file(words_list, 'data/{}/pickles/words_list.p'.format(dataset))
+    # words_list, words_freq = _create_vocabulary(all_captions)
+    # logger.info(f'Creating vocabulary: {len(words_list)} tokens!')
+    # write_pickle_file(words_list, 'data/{}/pickles/words_list.p'.format(dataset))
 
 
 def _create_vocabulary(captions):
