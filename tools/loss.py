@@ -91,6 +91,21 @@ class BiDirectionalRankingLoss(nn.Module):
 
         return loss
 
+class InfoNCE(nn.Module):
+
+    def __init__(self, temperature=0.07):
+        super(InfoNCE, self).__init__()
+        self.loss = nn.CrossEntropyLoss()
+        self.tau = temperature
+
+    def forward(self, audio_embeds, text_embeds, labels):
+
+        logits = audio_embeds @ text_embeds.T
+        labels = torch.arange(logits.shape[0]).to(logits.device)
+
+        loss = self.loss(logits, labels)
+
+        return loss
 
 class NTXent(nn.Module):
 
