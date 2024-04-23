@@ -14,7 +14,7 @@ from loguru import logger
 from pprint import PrettyPrinter
 from torch.utils.tensorboard import SummaryWriter
 from tools.utils import setup_seed, AverageMeter, a2t, t2a
-from tools.loss import BiDirectionalRankingLoss, TripletLoss, NTXent, WeightTriplet
+from tools.loss import BiDirectionalRankingLoss, TripletLoss, NTXent, WeightTriplet, InfoNCE
 from models.ASE_model import ASE
 from data_handling.DataLoader import get_dataloader
 
@@ -72,6 +72,8 @@ def train(config):
         criterion = TripletLoss(margin=config.training.margin)
     elif config.training.loss == 'ntxent':
         criterion = NTXent()
+    elif config.training.loss == 'infonce':
+        criterion = InfoNCE()
     elif config.training.loss == 'weight':
         criterion = WeightTriplet(margin=config.training.margin)
     else:
